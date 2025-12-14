@@ -1,3 +1,50 @@
+/* ================= SLIDER BANNIÈRE ================= */
+
+const slides = document.querySelectorAll(".slide");
+const rightArrow = document.querySelector(".arrow.right");
+const leftArrow = document.querySelector(".arrow.left");
+
+let slideIndex = 0;
+
+if (slides.length && rightArrow && leftArrow) {
+
+    const showSlide = (i) => {
+        slides.forEach(slide => slide.classList.remove("active"));
+        slides[i].classList.add("active");
+    };
+
+    rightArrow.addEventListener("click", () => {
+        slideIndex = (slideIndex + 1) % slides.length;
+        showSlide(slideIndex);
+    });
+
+    leftArrow.addEventListener("click", () => {
+        slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+        showSlide(slideIndex);
+    });
+}
+
+
+/* ================= PREVIEW IMAGES À PROPOS ================= */
+
+const aboutImages = document.querySelectorAll(".about-images img");
+const preview = document.getElementById("imagePreview");
+const previewImg = document.getElementById("previewImg");
+
+if (aboutImages.length && preview && previewImg) {
+
+    aboutImages.forEach(img => {
+        img.addEventListener("click", () => {
+            previewImg.src = img.src;
+            preview.style.display = "flex";
+        });
+    });
+
+    preview.addEventListener("click", () => {
+        preview.style.display = "none";
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const cartBtn = document.getElementById("cart-btn");
