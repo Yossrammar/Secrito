@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secrito</title>
+    <!-- Font importer de ce site https://cdnjs.com-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<!-- Image Preview -->
+<div class="image-preview" id="imagePreview">
+    <img id="previewImg" src="" alt="Preview">
+</div>
+
+<body>
+
+    <!--la section de header -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="images/secrito_logo.png" alt="Secrito Logo">
+
+        </a>
+        <nav class="navbar">
+            <a href="index.html">Accueil</a>
+            <a href="menu.html">Menu</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="icon">
+
+            <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        </div>
+
+    </header>
+
+    <!-- MENU  -->
+    <section class="menu-page" id="menu">
+
+        <h1 class="menu-title">Menu</h1>
+
+        <!-- Filtres catégories -->
+        <div class="menu-filters">
+            <button data-category="all">Tous</button>
+            <button data-category="sucree">Sucrée</button>
+            <button data-category="sale">Salé</button>
+            <button data-category="brunch">Brunch</button>
+            <button data-category="fresh">Fresh Bar</button>
+        </div>
+
+        <!-- Conteneur des produits -->
+        <div class="menu-container">
+
+            <!-- ===== BRUNCH ===== -->
+            <div class="menu-card" data-category="brunch">
+                <img src="images/Douceur quotidienne.png" alt="Douceur quotidienne">
+                <h3>Douceur quotidienne</h3>
+                <p>Un café avec deux mini croissants gourmands :
+                    Un croissant farci camembert avec une crème de poulet
+                    Un croissant avec une mousse de vanille, crème de noisette et des fruits de saison en cube</p>
+                <span class="price">22 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <div class="menu-card" data-category="brunch">
+                <img src="images/Arabesque.png" alt="Arabesque">
+                <h3>Arabesque</h3>
+                <p>Deux mini brik
+                    -Mokli à l'ancienne
+                    -Bezzin poulpe
+                    -Assida zgougou
+                    -Bsissa pistache SECRITO
+                    -Laklouka
+                    -Mélange SECRITO avec tahina et rob
+                    -Zammit et fruit de saison</p>
+                <span class="price">55 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <div class="menu-card" data-category="brunch">
+                <img src="images/Gourmand.png" alt="Gourmand">
+                <h3>Gourmand</h3>
+                <p>Wrap poulet pané
+                    -Mousse de chocolat croquante
+                    -dattes gourmandes
+                    Trois mini croissants crème :
+                    Pistache Noisette Vanille
+                    -2 mini crêpes poulet crème &crème de thon
+                    -œuf crème champignons</p>
+                <span class="price">47 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <div class="menu-card" data-category="brunch">
+                <img src="images/Salé.png" alt="Salé">
+                <h3>Salé</h3>
+                <p>Oeuf bénédicte saumon
+                    -Croissant salé
+                    -Salade grecque
+                    -Assiette de fromages
+                    -Citronnade à la SECRITO
+                    -Crème de thon
+                    -Pomme de terre et champignons</p>
+                <span class="price">45 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+            <div class="menu-card" data-category="brunch">
+                <img src="images/Healthy.png" alt="Salé">
+                <h3>Salé</h3>
+                <p>Toast salé avocat, saumon ,oeuf poché
+                    -Toast sucré ricotta SECRITO, fruits de saison ,noix et miel
+                    -Shot bomb
+                    -Salade avec légumes grillés
+                    -Deux boules sucrées healthy</p>
+                <span class="price">35 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <!-- ===== SUCRÉE ===== -->
+            <div class="menu-card" data-category="sucree">
+                <img src="images/Fleur de Chocolats.png" alt="Fleur de Chocolats">
+                <h3>Fleur de Chocolats</h3>
+                <p>2 fleurs de chocolat Secrito</p>
+                <span class="price">14 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <div class="menu-card" data-category="sucree">
+                <img src="images/Pistache secrito.png" alt="Pistache Secrito">
+                <h3>Pistache Secrito</h3>
+                <span class="price">19 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <div class="menu-card" data-category="sucree">
+                <img src="images/Noisettes secrito.png" alt="Noisettes Secrito">
+                <h3>Noisettes Secrito</h3>
+                <span class="price">18 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <div class="menu-card" data-category="sucree">
+                <img src="images/Tiramisu.png" alt="Tiramisu Signature">
+                <h3>Tiramisu Signature Secrito</h3>
+                <span class="price">20 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <div class="menu-card" data-category="sucree">
+                <img src="images/Crêpe Caramel Beurre Salé.png" alt="Crêpe Caramel">
+                <h3>Crêpe Caramel Beurre Salé</h3>
+                <span class="price">15 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <div class="menu-card" data-category="sucree">
+                <img src="images/Crêpe Nutella.png" alt="Crêpe Nutella">
+                <h3>Crêpe Nutella</h3>
+                <span class="price">17 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <div class="menu-card" data-category="sucree">
+                <img src="images/Crème brulée.png" alt="Crème brûlée">
+                <h3>Crème brûlée</h3>
+                <span class="price">21 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <!-- ===== SALEE ===== -->
+            <div class="menu-card" data-category="sale">
+                <img src="images/Wrap Viande Hachée spicy.png" alt="Wrap Viande Hachée spicy">
+                <h3>Wrap Viande Hachée spicy</h3>
+                <p>Un wrap généreux garni de bœuf haché maison, légèrement pimenté pour relever les saveurs, fondant en
+                    bouche et préparé avec des ingrédients frais pour un plaisir sain et gourmand.</p>
+                <span class="price">20 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <div class="menu-card" data-category="sale">
+                <img src="images/omllette.png" alt="omllette">
+                <h3>omllette</h3>
+                <p>TARTUFFO : Truffes LA SPAGNIOLA : Végétarienne NORVÉGIENNE : Saumon</p>
+                <span class="price">28 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <div class="menu-card" data-category="sale">
+                <img src="images/crevette pané.png" alt="crevette pané">
+                <h3>crevette pané</h3>
+                <p>Riz Blanc, fruit de saison, carottes râpées mariné, edamame, chou Cabus Sauce soja et mayonnaise
+                    épicé</p>
+                <span class="price">28 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <div class="menu-card" data-category="sale">
+                <img src="images/Crevette Grillé.png" alt="Crevette Grillé">
+                <h3>Crevette Grillé</h3>
+                <p>Riz Blanc, fruit de saison, carottes râpées mariné, edamame, chou Cabus Sauce soja et mayonnaise
+                    épicé</p>
+                <span class="price">30 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+
+            <div class="menu-card" data-category="sale">
+                <img src="images/Saumon.png" alt="Saumon">
+                <h3>Riz Blanc, fruit de saison, carottes râpées mariné, edamame, chou Cabus Sauce soja et mayonnaise
+                    épicé</h3>
+                <span class="price">28 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <!-- ===== FRESH BAR ===== -->
+            <div class="menu-card" data-category="fresh">
+                <img src="images/café latte glacée rose.png" alt="Café latte glacé rose">
+                <h3>Café latte glacé rose</h3>
+                <span class="price">16 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+
+            <div class="menu-card" data-category="fresh">
+                <img src="images/Café latte glacée pistache.png" alt="Café latte pistache">
+                <h3>Café latte glacé pistache</h3>
+                <span class="price">19 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <div class="menu-card" data-category="fresh">
+                <img src="images/fraise rose.png" alt="Fraise rose">
+                <h3>Fraise rose</h3>
+                <span class="price">15 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+
+            <div class="menu-card" data-category="fresh">
+                <img src="images/Mangue Passion.png" alt="Mangue Passion">
+                <h3>Mangue Passion</h3>
+                <span class="price">16 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <div class="menu-card" data-category="fresh">
+                <img src="images/Jus d’Orange Pressé Minute.png" alt="Jus Orange">
+                <h3>Jus d’Orange Pressé Minute</h3>
+                <span class="price">8 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+
+            <div class="menu-card" data-category="fresh">
+                <img src="images/Jus d’Agrumes Signature.png" alt="Jus Agrumes">
+                <h3>Jus d’Agrumes Signature</h3>
+                <p>Orange, pamplemousse, bergamote</p>
+                <span class="price">13 DT</span>
+                <button class="add-to-cart">Commander</button>
+            </div>
+        </div>
+
+    </section>
+    <!-- FIN MENU -->
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <!-- Localisation -->
+            <div class="footer-box">
+                <h3>Localisation</h3>
+                <p>4 Rue Tachkent, Ariana 2037</p>
+
+                <!-- Google Maps -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3233.300707746023!2d10.1693503!3d36.8622575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2cd9fb33c8d39:0x1dcbcddd48e1e569!2sSecrito!5e0!3m2!1sfr!2stn!4v1700000000000"
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+
+            </div>
+
+            <!-- Navigation -->
+            <div class="footer-box">
+                <h3>Navigation</h3>
+                <a href="#Accueil">Accueil</a>
+                <a href="#apropos">À propos</a>
+                <a href="menu.html">Menu</a>
+                <a href="#avis">Avis</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <!-- Contact & Réseaux -->
+            <div class="footer-box">
+                <h3>Contact</h3>
+                <p>Téléphone : +216 24 880 880</p>
+                <p>Email : contact@secrito.tn</p>
+
+                <h3>Suivez-nous</h3>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/secrito_brunch/?hl=fr" class="social-link" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        <span>secrito_brunch</span>
+                    </a>
+
+
+                </div>
+            </div>
+
+            <!-- Horaires -->
+            <div class="footer-box">
+                <h3>Horaires</h3>
+                <p>Lundi – Vendredi : 08h – 22h</p>
+                <p>Samedi – Dimanche : 09h – 23h</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Secrito — Tous droits réservés</p>
+        </div>
+
+    </footer>
+    <div class="cart" id="cart">
+        <h2>Votre panier</h2>
+
+        <!-- Liste des produits -->
+        <div class="cart-items"></div>
+
+        <!-- Total -->
+        <div class="cart-total-box">
+            <span>Total</span>
+            <strong><span id="cartTotal">0</span> DT</strong>
+        </div>
+
+        <!-- BOUTONS PANIER -->
+        <button id="clearCart" class="cart-btn secondary">
+            Vider le panier
+        </button>
+
+        <button id="checkoutBtn" class="cart-btn primary">
+            Passer la commande
+        </button>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+
+</html>
