@@ -38,16 +38,23 @@
 
     <section class="contact">
         <div class="contact-box">
+            <!-- Message de confirmation -->
+            <div id="contactSuccess" class="contact-success">
+                Votre message a été envoyé avec succès ✅
+            </div>
+
             <h2>Contactez-nous</h2>
 
-            <form>
+            <form id="contactForm">
                 <input type="text" placeholder="Nom complet" required>
                 <input type="email" placeholder="Email" required>
                 <input type="tel" placeholder="Téléphone">
                 <textarea rows="4" placeholder="Votre message"></textarea>
 
-                <button class="cart-btn primary">Envoyer</button>
+                <button type="submit" class="cart-btn primary">Envoyer</button>
             </form>
+
+        
         </div>
     </section>
 
