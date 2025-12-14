@@ -515,30 +515,39 @@ body {
 
 }
 
-/* Filtres */
+/* ================= BOUTONS FILTRES MENU ================= */
+
 .menu-filters {
     display: flex;
-    gap: 2.5rem;
-    /* plus d’espace entre les boutons */
     justify-content: center;
+    gap: 2rem;
     flex-wrap: wrap;
-    margin-bottom: 6rem;
-    /* plus d’air */
+    margin-bottom: 5rem;
 }
 
 .menu-filters button {
-    padding: 1.5rem 3.5rem;
-    /* boutons plus grands */
+    padding: 1.2rem 3.2rem;
     border-radius: 3rem;
-    /* plus arrondi */
-    background: var(--bg-main);
-    cursor: pointer;
-    font-size: 1.4rem;
-    /* texte plus grand */
+    background-color: #ebebdc;     /* beige */
+    color: #264755;                /* texte foncé */
+    font-size: 1.5rem;
     font-weight: 600;
-    /* texte plus épais */
-    letter-spacing: 0.05rem;
-    /* effet moderne */
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+/* Effet hover comme le bouton Commander */
+.menu-filters button:hover {
+    background-color: #84a49c;     /* accent */
+    color: #ffffff;
+    transform: scale(1.08);
+}
+
+/* Bouton actif (optionnel mais pro) */
+.menu-filters button.active {
+    background-color: #264755;
+    color: #ebebdc;
 }
 
 
@@ -716,6 +725,15 @@ body {
 .cart-remove:hover {
     color: red;
 }
+/* Nom du produit dans le panier */
+.cart-item-name {
+    font-size: 1.6rem;     /* augmente la taille */
+    font-weight: 700;      /* plus visible */
+    color: var(--color-primary);        /* beige clair */
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
 
 /* ================= BOUTONS PANIER ================= */
 
@@ -754,6 +772,54 @@ body {
     transform: scale(0.95);
 }
 
+/*Panier */
+
+/* Ligne prix + quantité */
+.qty-price-row {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 0.6rem;
+}
+
+/* Prix */
+.item-price {
+    font-size: 1.5rem;          /* un peu plus grand */
+    font-weight: 600;
+    color: var(--color-primary);             /* beige clair (ta palette) */
+    min-width: 60px;
+}
+
+/* Contrôles quantité */
+.qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/* Boutons + / - */
+.qty-controls i {
+    font-size: 1.4rem;          /* agrandi mais discret */
+    cursor: pointer;
+    color: #b6ccc0;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.qty-controls i:hover {
+    transform: scale(1.2);
+    color: #84a49c;
+}
+
+/* Nombre */
+.qty-number {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+
+
+
 /* ================= TOTAL PANIER ================= */
 
 .cart-total-box {
@@ -780,8 +846,6 @@ body {
 
 /* ================= CONTACT ================= */
 
-
-
 .contact {
     min-height: 100vh;
     padding: 10rem 7% 6rem;
@@ -795,6 +859,8 @@ body {
 
     background-size: cover;
     background-position: center;
+
+    /* évite bugs mobile */
     background-attachment: fixed;
 
     display: flex;
@@ -803,13 +869,26 @@ body {
     text-align: center;
 }
 
+/* Désactiver fixed sur mobile */
+@media (max-width: 768px) {
+    .contact {
+        background-attachment: scroll;
+    }
+}
+
+.contact-box {
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+}
+
 .contact-box h2 {
-       font-size: 4.5rem;
+    font-size: 4.5rem;
     color: #ebebdc;
-    text-align: center;
     padding: 5rem 8%;
 }
 
+/* Inputs */
 .contact-box input,
 .contact-box textarea {
     width: 100%;
@@ -824,15 +903,14 @@ body {
     color: #ebebdc;
 }
 
-/* Placeholder */
 .contact-box input::placeholder,
 .contact-box textarea::placeholder {
     color: rgba(235, 235, 220, 0.7);
 }
 
-/* Focus */
 .contact-box input:focus,
 .contact-box textarea:focus {
+    outline: none;
     border-bottom-color: #ebebdc;
 }
 
@@ -840,6 +918,7 @@ body {
 .contact-box button {
     margin-top: 2rem;
 }
+
 .contact-box .cart-btn {
     background: transparent;
     color: #ebebdc;
@@ -851,36 +930,30 @@ body {
     color: var(--color-primary);
 }
 
-/* ================= MESSAGE CONTACT AU MILIEU ================= */
+/* ================= MODAL MERCI ================= */
 
-.contact-box {
-    position: relative; /* obligatoire */
-}
+.thank-modal {
+    position: fixed;
+    inset: 0; /* top, right, bottom, left = 0 */
+    background: rgba(38, 71, 85, 0.6);
 
-.contact-success {
     display: none;
+    align-items: center;
+    justify-content: center;
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    padding: 2rem 3rem;
-    width: 90%;
-
-    background: rgba(235, 235, 220, 0.2);
-    border: 1px solid rgba(235, 235, 220, 0.6);
-    border-radius: 1.5rem;
-
-    color: #ebebdc;
-    font-size: 1.5rem;
-    font-weight: 500;
-
-    text-align: center;
-    backdrop-filter: blur(4px);
+    z-index: 3000;
+    cursor: pointer;
 }
 
+.thank-box {
+    background: #ebebdc;
+    padding: 3rem 4rem;
+    border-radius: 2rem;
 
+    font-size: 1.8rem;
+    color: #264755;
+    font-weight: 600;
+    text-align: center;
 
-
-
+    cursor: default;
+}

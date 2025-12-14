@@ -11,12 +11,13 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
 </head>
-<!-- Image Preview -->
-<div class="image-preview" id="imagePreview">
-    <img id="previewImg" src="" alt="Preview">
-</div>
 
 <body>
+
+    <!-- Image Preview -->
+    <div class="image-preview" id="imagePreview">
+        <img id="previewImg" src="" alt="Preview">
+    </div>
 
     <!--la section de header -->
     <header class="header">
@@ -38,10 +39,6 @@
 
     <section class="contact">
         <div class="contact-box">
-            <!-- Message de confirmation -->
-            <div id="contactSuccess" class="contact-success">
-                Votre message a été envoyé avec succès ✅
-            </div>
 
             <h2>Contactez-nous</h2>
 
@@ -49,19 +46,16 @@
                 <input type="text" placeholder="Nom complet" required>
                 <input type="email" placeholder="Email" required>
                 <input type="tel" placeholder="Téléphone">
-                <textarea rows="4" placeholder="Votre message"></textarea>
+                <textarea rows="4" placeholder="Votre message" required></textarea>
 
-                <button type="submit" class="cart-btn primary">Envoyer</button>
+                <button type="submit" class="cart-btn primary">
+                    Envoyer
+                </button>
             </form>
 
-        
         </div>
     </section>
 
-
-
-
-    <script src="js/main.js"></script>
     <!-- Footer -->
     <footer class="footer">
 
@@ -140,7 +134,13 @@
             Passer la commande
         </button>
     </div>
-
+    <!-- MODAL MESSAGE MERCI -->
+    <div class="thank-modal" id="thankModal">
+        <div class="thank-box">
+            <p>Merci pour votre message </p>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
 </body>
 
 

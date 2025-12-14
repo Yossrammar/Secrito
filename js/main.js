@@ -65,11 +65,34 @@ document.addEventListener("DOMContentLoaded", () => {
     let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
     // ouvrir / fermer panier
-    if (cartBtn) {
-        cartBtn.addEventListener("click", () => {
+    if (cart && cartBtn) {
+
+        cartBtn.addEventListener("click", (e) => {
+            e.stopPropagation(); // important
             cart.classList.toggle("active");
         });
+
+        // empêcher fermeture quand on clique dans le panier
+        cart.addEventListener("click", (e) => {
+            e.stopPropagation();
+        });
+
+        // fermer au clic extérieur
+        document.addEventListener("click", () => {
+            if (cart.classList.contains("active")) {
+                cart.classList.remove("active");
+            }
+        });
+
+        // fermer au scroll
+        window.addEventListener("scroll", () => {
+            if (cart.classList.contains("active")) {
+                cart.classList.remove("active");
+            }
+        });
     }
+
+
 
     // ajouter produit
     document.querySelectorAll(".add-to-cart").forEach(btn => {
@@ -150,30 +173,57 @@ document.addEventListener("DOMContentLoaded", () => {
             div.className = "cart-item";
 
             div.innerHTML = `
-            <img src="${item.img}">
-            <div style="flex:1">
-                <strong>${item.name}</strong><br>
-                ${item.qty} × ${item.price} DT
+            <img src="${item.img}" alt="${item.name}">
+            <div class="cart-info">
+                
+                <strong class="cart-item-name">${item.name}</strong>
+
+                <div class="qty-price-row">
+    <span class="item-price">${item.price} DT</span>
+
+    <div class="qty-controls">
+        <i class="fas fa-minus qty-minus" data-index="${index}"></i>
+        <span class="qty-number">${item.qty}</span>
+        <i class="fas fa-plus qty-plus" data-index="${index}"></i>
+    </div>
+</div>
             </div>
-            <span class="cart-remove" data-index="${index}">
-                <i class="fas fa-trash"></i>
-            </span>
+
+            <i class="fas fa-trash cart-remove" data-index="${index}"></i>
         `;
 
             cartItemsContainer.appendChild(div);
         });
 
         cartTotal.textContent = total;
-
-        // activer suppression individuelle
-        document.querySelectorAll(".cart-remove").forEach(btn => {
-            btn.addEventListener("click", () => {
-                const i = btn.getAttribute("data-index");
-                cartItems.splice(i, 1);
-                saveAndUpdate();
-            });
-        });
     }
+    cartItemsContainer.addEventListener("click", (e) => {
+        const index = e.target.dataset.index;
+        if (index === undefined) return;
+
+        // PLUS
+        if (e.target.classList.contains("qty-plus")) {
+            cartItems[index].qty++;
+            saveAndUpdate();
+        }
+
+        // MOINS
+        if (e.target.classList.contains("qty-minus")) {
+            if (cartItems[index].qty > 1) {
+                cartItems[index].qty--;
+            } else {
+                cartItems.splice(index, 1);
+            }
+            saveAndUpdate();
+        }
+
+        // SUPPRIMER
+        if (e.target.classList.contains("cart-remove")) {
+            cartItems.splice(index, 1);
+            saveAndUpdate();
+        }
+    });
+
 
 
     updateCart();
@@ -195,60 +245,29 @@ document.addEventListener("DOMContentLoaded", () => {
         cart.classList.remove("active");
     });
 
- 
-
-
-
-
-    /* ================= VALIDATION FORMULAIRE CONTACT ================= */
-
-    const contactForm = document.getElementById("contactForm");
-    const contactSuccess = document.getElementById("contactSuccess");
-
-    if (!contactForm || !contactSuccess) return;
-
-    contactForm.addEventListener("submit", (e) => {
-        e.preventDefault(); // empêche le rechargement
-
-        const name = contactForm.querySelector('input[type="text"]').value.trim();
-        const email = contactForm.querySelector('input[type="email"]').value.trim();
-        const message = contactForm.querySelector("textarea").value.trim();
-
-        // Vérification champs vides
-        if (name === "" || email === "" || message === "") {
-            alert("Veuillez remplir tous les champs obligatoires.");
-            return;
-        }
-
-        // Vérification format email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert("Veuillez entrer une adresse email valide.");
-            return;
-        }
-
-        // Affichage message
-        contactSuccess.textContent = "Votre message a été envoyé avec succès ✅";
-        contactSuccess.style.display = "block";
-        contactForm.style.opacity = "0.3";
-
-        contactForm.reset();
-    });
-
-    // Fermer le message au clic
-    document.addEventListener("click", () => {
-        if (contactSuccess.style.display === "block") {
-            contactSuccess.style.display = "none";
-            contactForm.style.opacity = "1";
-        }
-    });
-
-    // Empêcher la fermeture quand on clique sur le message
-    contactSuccess.addEventListener("click", (e) => {
-        e.stopPropagation();
-    });
-
-
 
 });
 
+    /* ================= CONTACT : MODAL MERCI ================= */
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const form = document.getElementById("contactForm");
+        const modal = document.getElementById("thankModal");
+
+        if (!form || !modal) {
+            console.log("FORM ou MODAL introuvable");
+            return;
+        }
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            modal.style.display = "flex";
+            console.log("MODAL AFFICHÉ");
+            form.reset();
+        });
+
+        modal.addEventListener("click", function () {
+            modal.style.display = "none";
+        });
+
+    });
